@@ -28,7 +28,6 @@ func main() {
 		},
 	}
 	err = t.Execute(os.Stdout, user)
-
 	if err != nil {
 		panic(err)
 	}
