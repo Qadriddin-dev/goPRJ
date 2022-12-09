@@ -1,8 +1,10 @@
 {{template "header" .}}
 <div class="py-12 flex justify-center">
     <div class="px-8 py-8 bg-white rounded shadow">
-        <h1 class="pt-4 pb-8 text-center text-3xl font-bold text-gray-900">SING UP</h1>
         <form action="/users" method="post">
+            <div class="hidden">
+                {{csrfField}}
+            </div>
             <div class="py-2">
                 <label for="email" class="text-sm font-semibold text-gray-800">Email Address</label>
                 <input name="email" id="email" type="email" placeholder="Email Address"
@@ -30,6 +32,7 @@
                 <p class="text-xs text-gray-500"><a href="/reset-pw">Forgot your password?</a></p>
             </div>
         </form>
+        <h1 class="pt-4 pb-8 text-center text-3xl font-bold text-gray-900">SING UP</h1>
     </div>
 </div>
 {{template "footer" .}}
