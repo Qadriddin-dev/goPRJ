@@ -6,8 +6,6 @@ import (
 	"math/rand"
 )
 
-const SessionTokenBytes = 32
-
 func Bytes(n int) ([]byte, error) {
 	b := make([]byte, n)
 	nRead, err := rand.Read(b)
@@ -26,8 +24,4 @@ func String(n int) (string, error) {
 		return "", fmt.Errorf("string: %w", err)
 	}
 	return base64.URLEncoding.EncodeToString(b), nil
-}
-
-func SessionToken() (string, error) {
-	return String(SessionTokenBytes)
 }
