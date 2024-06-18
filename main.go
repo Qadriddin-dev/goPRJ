@@ -13,7 +13,6 @@ import (
 
 func main() {
 	r := chi.NewRouter()
-
 	r.Get("/", controllers.StaticHandler(
 		views.Must(views.ParseFS(templates.FS, "home.gohtml", "tailwind.gohtml"))))
 	r.Get("/contact", controllers.StaticHandler(
@@ -56,11 +55,11 @@ func main() {
 	r.NotFound(func(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Page not found", http.StatusNotFound)
 	})
-	fmt.Println("Starting the server on :8000...")
+	fmt.Println("Starting the server on :8080...")
 
 	csrfKey := "gFvi45R4fy5xNBlnEeZtQbfAVCYEIAUX"
 	csrfMW := csrf.Protect(
 		[]byte(csrfKey),
 		csrf.Secure(false))
-	http.ListenAndServe(":8000", csrfMW(r))
+	http.ListenAndServe(":8080", csrfMW(r))
 }
